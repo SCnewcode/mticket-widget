@@ -18,6 +18,11 @@ module.exports = defineConfig({
            development: {
             baseUrl: "https://showcasem.test.mticket.com.ua"
           },
+
+          developmentFriday: {
+            baseUrl: "https://showcase.test.mticket.com.ua"
+          },
+
   }
 
 });
