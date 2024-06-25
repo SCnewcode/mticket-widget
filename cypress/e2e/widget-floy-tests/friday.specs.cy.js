@@ -8,6 +8,10 @@ import { WidgetFridayElements } from "../../pages/FridayWidgetPageElements";
 
 let globalOrderNumber;
 
+let globalTelephoneNumber;
+
+let globalTelephoneNumberEdit;
+
 const WidgetFridayElementsObj = new WidgetFridayElements();
 
 
@@ -218,7 +222,7 @@ beforeEach(() => {
 
   // it("it should be lock ticket in active event", () => {
   //   cy.visit(
-  //     Cypress.env("developmentFriday").baseUrl + "/widget/4/1/286"
+  //     Cypress.env("developmentFriday").baseUrl + "/widget/4/1/472"
   //   );
   //   cy.wait(1000);
 
@@ -287,7 +291,7 @@ beforeEach(() => {
 
   // it("it should be check basket order sum amount", () => {
   //   cy.visit(
-  //     Cypress.env("developmentFriday").baseUrl + "/widget/4/1/286"
+  //     Cypress.env("developmentFriday").baseUrl + "/widget/4/1/472"
   //   );
 
 
@@ -312,7 +316,7 @@ beforeEach(() => {
   // it("it should be check all event price and event info on page", () => {
 
   //   cy.visit(
-  //     Cypress.env("developmentFriday").baseUrl + "/widget/4/1/286"
+  //     Cypress.env("developmentFriday").baseUrl + "/widget/4/1/472"
   //   );
 
 
@@ -395,104 +399,104 @@ beforeEach(() => {
   it("it should be check payment systems redirect", () => {
 
     cy.visit(
-      Cypress.env("developmentFriday").baseUrl + "/widget/4/1/286"
+      Cypress.env("developmentFriday").baseUrl + "/widget/4/1/472"
     );
 
     cy.wait(1000);
 
     // Check if element with specific class exists
-    cy.get(".schema").then(($element) => {
-      if ($element.hasClass("sectors-list")) {
-        cy.get(".svg-pan-zoom_viewport")
-          .find(".sector.enabled.has-info")
-          .not(".disabled")
+    // cy.get(".schema").then(($element) => {
+    //   if ($element.hasClass("sectors-list")) {
+    //     cy.get(".svg-pan-zoom_viewport")
+    //       .find(".sector.enabled.has-info")
+    //       .not(".disabled")
 
-          .then(($elements) => {
-            // Randomly click one of the elements
-            const randomIndex = Math.floor(Math.random() * $elements.length);
-            const randomElement = $elements[randomIndex];
-            cy.wrap(randomElement, { force: true }).click();
-          });
+    //       .then(($elements) => {
+    //         // Randomly click one of the elements
+    //         const randomIndex = Math.floor(Math.random() * $elements.length);
+    //         const randomElement = $elements[randomIndex];
+    //         cy.wrap(randomElement, { force: true }).click();
+    //       });
 
-        cy.get(".svg-pan-zoom_viewport")
-          .find(".place")
-          .not(".disabled")
+    //     cy.get(".svg-pan-zoom_viewport")
+    //       .find(".place")
+    //       .not(".disabled")
 
-          .then(($elements) => {
-            // Randomly click one of the elements
-            const randomIndex = Math.floor(Math.random() * $elements.length);
-            const randomElement = $elements[randomIndex];
-            cy.wrap(randomElement).click();
-          });
-      } else {
-        cy.get("body").then((body) => {
-          if (!body.find('div[data-pc-name="dialog"]')) {
-            cy.get(".service-message-actions")
-              .find('button[type="button"]')
-              .click();
+    //       .then(($elements) => {
+    //         // Randomly click one of the elements
+    //         const randomIndex = Math.floor(Math.random() * $elements.length);
+    //         const randomElement = $elements[randomIndex];
+    //         cy.wrap(randomElement).click();
+    //       });
+    //   } else {
+    //     cy.get("body").then((body) => {
+    //       if (!body.find('div[data-pc-name="dialog"]')) {
+    //         cy.get(".service-message-actions")
+    //           .find('button[type="button"]')
+    //           .click();
 
-            cy.get(".svg-pan-zoom_viewport")
-              .find(".place")
-              .not(".disabled")
+    //         cy.get(".svg-pan-zoom_viewport")
+    //           .find(".place")
+    //           .not(".disabled")
 
-              .then(($elements) => {
-                // Randomly click one of the elements
-                const randomIndex = Math.floor(
-                  Math.random() * $elements.length
-                );
-                const randomElement = $elements[randomIndex];
-                cy.wrap(randomElement).click();
-              });
-          } else {
-            cy.get(".svg-pan-zoom_viewport") // Replace 'your-selector' with the appropriate CSS selector for your enabled elements
-              .find(".place")
-              .not(".disabled")
+    //           .then(($elements) => {
+    //             // Randomly click one of the elements
+    //             const randomIndex = Math.floor(
+    //               Math.random() * $elements.length
+    //             );
+    //             const randomElement = $elements[randomIndex];
+    //             cy.wrap(randomElement).click();
+    //           });
+    //       } else {
+    //         cy.get(".svg-pan-zoom_viewport") // Replace 'your-selector' with the appropriate CSS selector for your enabled elements
+    //           .find(".place")
+    //           .not(".disabled")
 
-              .then(($elements) => {
-                const randomIndices = Array.from({ length: 5 }, () =>
-                  Math.floor(Math.random() * $elements.length)
-                );
+    //           .then(($elements) => {
+    //             const randomIndices = Array.from({ length: 5 }, () =>
+    //               Math.floor(Math.random() * $elements.length)
+    //             );
 
-                // Perform clicks on the randomly selected elements
-                randomIndices.forEach((index) => {
-                  cy.wrap($elements[index]).click({ force: true }); // Force click if needed
-                });
-              });
-          }
-        });
-      }
-    });
+    //             // Perform clicks on the randomly selected elements
+    //             randomIndices.forEach((index) => {
+    //               cy.wrap($elements[index]).click({ force: true }); // Force click if needed
+    //             });
+    //           });
+    //       }
+    //     });
+    //   }
+    // });
 
-    WidgetFridayElementsObj.btnFridayRegularOrderClick();
-    cy.wait(1000);
-    WidgetFridayElementsObj.btnFridayRegularOrderClick();
-
-
-    WidgetFridayElementsObj.methodItemBookFriday().eq(0).click();
-
-  
-
-   cy.wait(1000);
+    // WidgetFridayElementsObj.btnFridayRegularOrderClick();
+    // cy.wait(1000);
+    // WidgetFridayElementsObj.btnFridayRegularOrderClick();
 
 
-   WidgetFridayElementsObj.findFridayPaymentSystem()
-      .find('label[for="egwmd"]')
-      .click();
-
-
-      WidgetFridayElementsObj.btnFridayRegularOrderClick();
-
-
-      cy.wait(3000);
-
-    cy.origin("https://vb059.vb.md", () => {
-      cy.wait(1000);
-      cy.get(".container-inside-card").should("be.visible");  
-      cy.go('back')
-    });
+    // WidgetFridayElementsObj.methodItemBookFriday().eq(0).click();
 
   
-    cy.wait(2000);
+
+  //  cy.wait(1000);
+
+
+  //  WidgetFridayElementsObj.findFridayPaymentSystem()
+  //     .find('label[for="egwmd"]')
+  //     .click();
+
+
+  //     WidgetFridayElementsObj.btnFridayRegularOrderClick();
+
+
+  //     cy.wait(3000);
+
+  //   cy.origin("https://vb059.vb.md", () => {
+  //     cy.wait(1000);
+  //     cy.get(".container-inside-card").should("be.visible");  
+  //     cy.go('back')
+  //   });
+
+  
+  //   cy.wait(2000);
      
 
   //   WidgetFridayElementsObj.methodItemBookFriday().eq(0).click();
@@ -540,36 +544,36 @@ beforeEach(() => {
  
   //    cy.wait(1000);
 
-    WidgetFridayElementsObj.methodItemBookFriday().should("be.visible");
+    // WidgetFridayElementsObj.methodItemBookFriday().should("be.visible");
 
 
-    WidgetFridayElementsObj.methodItemBookFriday().eq(1).click();
+    // WidgetFridayElementsObj.methodItemBookFriday().eq(1).click();
 
-    WidgetFridayElementsObj.methodItemBookTextFriday().should("not.be.empty");
+    // WidgetFridayElementsObj.methodItemBookTextFriday().should("not.be.empty");
 
-    WidgetFridayElementsObj.btnFridayRegularOrderClick();
+    // WidgetFridayElementsObj.btnFridayRegularOrderClick();
 
-    cy.wait(3000);
+    // cy.wait(3000);
 
-    cy.get(".thanks-eticket-info").should("be.visible");
+    // cy.get(".thanks-eticket-info").should("be.visible");
 
-    cy.get(".thanks-eticket-info__order-value")
-      .first()
-      .invoke("text")
-      .as("orderNumber");
+    // cy.get(".thanks-eticket-info__order-value")
+    //   .first()
+    //   .invoke("text")
+    //   .as("orderNumber");
     
-    cy.get("@orderNumber").then((text) => {
-      const number = parseFloat(text.match(/\d+/)[0]);
-      globalOrderNumber = number;
-      cy.log("Saved number:", globalOrderNumber);
-    });
+    // cy.get("@orderNumber").then((text) => {
+    //   const number = parseFloat(text.match(/\d+/)[0]);
+    //   globalOrderNumber = number;
+    //   cy.log("Saved number:", globalOrderNumber);
+    // });
 
 
-    WidgetFridayElementsObj.btnFridayRegularClick();
+    // WidgetFridayElementsObj.btnFridayRegularClick();
 
-    cy.wait(2000);
+    // cy.wait(2000);
 
-    cy.get(".order-list").should("be.visible");
+    // cy.get(".order-list").should("be.visible");
 
  
 
@@ -580,28 +584,28 @@ beforeEach(() => {
     
     
     cy.visit(
-      Cypress.env("developmentFriday").baseUrl + "/widget/4/1/286/user/orders"
+      Cypress.env("developmentFriday").baseUrl + "/widget/4/1/472/user/orders"
     );
   
-    cy.wait(2000);
+    // cy.wait(2000);
   
-    cy.get(".order-list").should("be.visible");
+    // cy.get(".order-list").should("be.visible");
   
-    cy.get(".order-list__list > .order-item")
-      .eq(0)
-      .find(".order-row__value")
-      .first()
-      // .eq(1)
-      .invoke("text")
-      .then((text) => {
-        // Parse the text to extract the numerical value
-        const orderNumber = parseFloat(text.match(/\d+/)[0]);
-        // Log the saved number
-        cy.wrap(orderNumber).should("eq", globalOrderNumber);
-        cy.log("Saved number in orders list:", orderNumber);
-      });
+    // cy.get(".order-list__list > .order-item")
+    //   .eq(0)
+    //   .find(".order-row__value")
+    //   .first()
+    //   // .eq(1)
+    //   .invoke("text")
+    //   .then((text) => {
+    //     // Parse the text to extract the numerical value
+    //     const orderNumber = parseFloat(text.match(/\d+/)[0]);
+    //     // Log the saved number
+    //     cy.wrap(orderNumber).should("eq", globalOrderNumber);
+    //     cy.log("Saved number in orders list:", orderNumber);
+    //   });
   
-      cy.GetBookMailFriday(globalOrderNumber);
+      // cy.GetBookMailFriday(globalOrderNumber);
   
   
   });
@@ -629,356 +633,275 @@ beforeEach(() => {
 
     cy.wait(3000);
 
-  //   WidgetElementsObj.findPersonalInfoFields().first().type("латинские");
 
-  //   WidgetElementsObj.clickBtnRegularPersonalInfo();
+    WidgetFridayElementsObj.firstInputTicketDetails().first().type("латинские");
 
-  //   cy.wait(1000);
+   
+    // WidgetFridayElementsObj.firstInputTypeTestNegative().eq(0).type(randomPhoneNumber)
 
-  //   WidgetElementsObj.checkErroBoxOnPersonalInfo()
-  //     .should("be.visible")
-  //     .and(
-  //       "contain",
-  //       "Filed Full name must contains only latin characters or spaces."
-  //     );
 
-  //   cy.wait(1000);
+    WidgetFridayElementsObj.btnFridayRegularClick();
 
-  //   WidgetElementsObj.findPersonalInfoFields().first().clear();
+    cy.wait(1000);
 
-  //   WidgetElementsObj.findPersonalInfoFields().first().type("Test Name");
+    WidgetFridayElementsObj.checkErroBoxTextVisibleFriday()
+      .should("be.visible")
+      .and(
+        "contain",
+        "Filed Full name must contains only latin characters or spaces."
+      );
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(1).type("КЕ343434344");
+      WidgetFridayElementsObj.firstInputFilledTicketDetails().first().clear();
 
-  //   cy.wait(1000);
+      WidgetFridayElementsObj.firstInputTicketDetails().first().type("Test Name");
 
-  //   WidgetElementsObj.checkErroBoxOnPersonalInfo().eq(0).should("be.visible");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("КЕ343434344");
 
-  //   WidgetElementsObj.checkErroBoxOnPersonalInfo()
-  //     .should("be.visible")
-  //     .and("contain", "Filed Phone is required!");
+     cy.wait(1000);
 
-  //   cy.wait(1000);
+     WidgetFridayElementsObj.checkErroBoxTextVisibleFriday().eq(0).should("be.visible");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(1).clear();
+     WidgetFridayElementsObj.checkErroBoxTextVisibleFriday()
+      .should("be.visible")
+      .and("contain", "Filed Phone is required!");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(1).type("BR454455666");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(2).type("38094555");
+      WidgetFridayElementsObj.firstInputFilledTicketDetails().eq(1).clear();
 
-  //   WidgetElementsObj.checkErroBoxOnPersonalInfo()
-  //     .should("be.visible")
-  //     .and("contain", "Phone format is invalid.");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("BR454455666");
+      cy.wait(1000);
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(2).clear();
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("38094555");
+      cy.wait(1000);
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(2).type("380945559898");
+      WidgetFridayElementsObj.checkErroBoxTextVisibleFriday()
+      .should("be.visible")
+      .and("contain", "Phone format is invalid.");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(3).type("123456789");
+      cy.wait(3000);
 
-  //   WidgetElementsObj.clickBtnRegularPersonalInfo();
 
-  //   WidgetElementsObj.checkErroBoxOnPersonalInfo()
-  //     .should("be.visible")
-  //     .and("contain", "INN must be 10 digits");
+      WidgetFridayElementsObj.firstInputFilledTicketDetails().eq(2).clear();
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(3).clear();
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("380945559898");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(3).type("1234567891");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("123456789");
+      cy.wait(3000);
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(4).type("@testmail.com");
+      WidgetFridayElementsObj.btnFridayRegularClick();
 
-  //   WidgetElementsObj.checkErroBoxOnPersonalInfo()
-  //     .should("be.visible")
-  //     .and("contain", "Email format is invalid.");
+      WidgetFridayElementsObj.checkErroBoxTextVisibleFriday()
+      .should("be.visible")
+      .and("contain", "INN must be 10 digits");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(4).clear();
+      cy.wait(3000);
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(4).type("newuser@test.com");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(5).type("Uni");
+      WidgetFridayElementsObj.firstInputFilledTicketDetails().eq(3).clear();
 
-  //   WidgetElementsObj.checkErroBoxOnPersonalInfo()
-  //     .should("be.visible")
-  //     .and("contain", "Filed Place of living must be at least 4 characters.");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("1234567891");
+      cy.wait(3000);
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(5).clear();
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(5).type("United States");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("Uni");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(6).type("Den");
+      WidgetFridayElementsObj.checkErroBoxTextVisibleFriday()
+      .should("be.visible")
+      .and("contain", "Filed Address must be at least 4 characters.");
 
-  //   WidgetElementsObj.checkErroBoxOnPersonalInfo().should("be.visible");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(6).clear();
+      WidgetFridayElementsObj.firstInputFilledTicketDetails().eq(4).clear();
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(6).type("Denver");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("test street 345");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(7).type("Tes");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("Den");
 
-  //   WidgetElementsObj.checkErroBoxOnPersonalInfo()
-  //     .should("be.visible")
-  //     .and("contain", "Filed Company must be at least 4 characters.");
+      WidgetFridayElementsObj.checkErroBoxTextVisibleFriday().should("be.visible");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(7).clear();
+      WidgetFridayElementsObj.firstInputFilledTicketDetails().eq(5).clear();
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(7).type("Test Company");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("Denver");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(8).type("dev");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("Tes");
 
-  //   WidgetElementsObj.checkErroBoxOnPersonalInfo()
-  //     .should("be.visible")
-  //     .and("contain", "Filed Position must be at least 4 characters.");
+      WidgetFridayElementsObj.checkErroBoxTextVisibleFriday().should("be.visible");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(8).clear();
+      WidgetFridayElementsObj.firstInputFilledTicketDetails().eq(6).clear();
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(8).type("developer");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("test company");
 
-  //   WidgetElementsObj.clickBtnRegularPersonalInfo();
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("@testmail.com");
 
-  //   cy.get(".basket-order-sum__amount").each(($element) => {
-  //     const text = $element.text().trim();
-  //     expect(text).to.include("1 ticket");
-  //   });
+      WidgetFridayElementsObj.btnFridayRegularClick();
 
-  //   WidgetElementsObj.clickBasketTicketPersonalInfo();
+      WidgetFridayElementsObj.checkErroBoxTextVisibleFriday()
+      .should("be.visible")
+      .and("contain", "Email format is invalid.");
 
-  //   WidgetElementsObj.personalInfoDialogModalVisible().should("be.visible");
+      cy.wait(3000);
 
-  //   WidgetElementsObj.findPersonalInfoFields().first().clear();
+      WidgetFridayElementsObj.firstInputFilledTicketDetails().eq(7).clear();
 
-  //   WidgetElementsObj.findPersonalInfoFields().first().type("Test Edit Name");
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("newuser@test.com");
 
-  //   cy.wait(1000);
+      cy.wait(3000);
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(2).clear();
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("tes");
 
-  //   WidgetElementsObj.findPersonalInfoFields().eq(2).type("09999999999");
+      WidgetFridayElementsObj.checkErroBoxTextVisibleFriday().should("be.visible");
 
-  //   WidgetElementsObj.findPersonalInfoFields()
-  //     .eq(2)
-  //     .invoke("val")
-  //     .as("numberText");
+      WidgetFridayElementsObj.firstInputFilledTicketDetails().eq(8).clear();
 
-  //   cy.get("@numberText").then((text) => {
-  //     globalTelephoneNumber = text;
-  //     cy.log("Saved telephone number:", globalTelephoneNumber);
-  //   });
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("developer");
+  
+      cy.wait(3000);
 
-  //   WidgetElementsObj.clickBtnRegularPersonalInfo();
+      WidgetFridayElementsObj.firstInputFilledTicketDetails()
+      .eq(2)
+      .invoke("val")
+      .as("numberText");
 
-  //   cy.wait(2000);
+    cy.get("@numberText").then((text) => {
+      globalTelephoneNumber = text;
+      cy.log("Saved telephone number:", globalTelephoneNumber);
+    });
 
-  //   WidgetElementsObj.basketActionButtonClick().click();
+
+    WidgetFridayElementsObj.btnFridayRegularClick();
+
+    cy.wait(1000);
+
+    WidgetFridayElementsObj.btnFridayRegularOrderClick();
+    cy.wait(1000);
+    WidgetFridayElementsObj.btnFridayRegularOrderClick();
+
+
+    WidgetFridayElementsObj.methodItemBookFriday().eq(1).click();
+ 
+   cy.wait(1000);
+
+    WidgetFridayElementsObj.methodItemBookTextFriday().should("not.be.empty");
+
+    WidgetFridayElementsObj.btnFridayRegularOrderClick();
+
+    cy.wait(3000);
+
+    cy.get(".thanks-eticket-info").should("be.visible");
+
+      WidgetFridayElementsObj.btnFridayRegularClick();
+
+    cy.wait(2000);
+
+    cy.get(".order-list").should("be.visible");
+
+
+
+
    });
 
+
+
+
+
   it("it should test if the ticket personal info matches and visible in orders list", () => {
-  //   cy.visit(
-  //     Cypress.env("development").baseUrl +
-  //       "/widget4site1/widget/event/454/checkout"
-  //   );
-  //   WidgetElementsObj.cookieConsentClick();
-  //   cy.wait(1000);
 
-  //   WidgetElementsObj.methodItemNameBookFind()
-  //     .contains("Book a ticket")
-  //     .click();
+    cy.visit(
+      Cypress.env("developmentFriday").baseUrl + "/widget/4/1/477/user/orders"
+    );
 
-  //   WidgetElementsObj.basketActionButtonRegularClick().click();
+    cy.get(".order-list").should("be.visible");
 
-  //   cy.wait(2000);
+    WidgetFridayElementsObj.ticketDetailsFridayOrdersClick().first().click();
 
-  //   cy.get(".thanks-page").should("be.visible");
+    cy.wait(2000);
 
-  //   WidgetElementsObj.orderCongratulationBookingClick().click();
+    WidgetFridayElementsObj.ticketDetailsOrderEditButtonClick().click();
 
-  //   cy.wait(2000);
+    cy.wait(2000);
 
-  //   cy.get(".order-page").should("be.visible");
+    WidgetFridayElementsObj.firstInputFilledTicketDetails()
+      .eq(2)
+      .invoke("val")
+      .then((text) => {
+        const telephoneNumberEdit = text;
 
-  //   WidgetElementsObj.clickOnTicketsInOrdersPage();
+        cy.wrap(telephoneNumberEdit).should("eq",  globalTelephoneNumber);
+        cy.log("Saved number in orders list:", telephoneNumberEdit);
 
-  //   cy.wait(2000);
+      });
 
-  //   WidgetElementsObj.clickBtnEditPersonalInfo();
 
-  //   cy.wait(1000);
+      cy.wait(1000);
 
-  //   WidgetElementsObj.findPersonalInfoFields()
-  //     .eq(2)
-  //     .invoke("val")
-  //     .then((text) => {
-  //       const telephoneNumberEdit = text;
+      WidgetFridayElementsObj.firstInputFilledTicketDetails().eq(2).clear();
 
-  //       cy.wrap(telephoneNumberEdit).should("eq", globalTelephoneNumber);
-  //       cy.log("Saved number in orders list:", telephoneNumberEdit);
-  //     });
+      WidgetFridayElementsObj.firstInputTicketDetails().eq(0).type("380999321454");
+
+      WidgetFridayElementsObj.firstInputFilledTicketDetails()
+      .eq(2)
+      .invoke("val")
+      .as("numberEditText");
+
+    cy.get("@numberEditText").then((text) => {
+      globalTelephoneNumberEdit = text;
+      cy.log("Saved telephone number:", globalTelephoneNumberEdit);
+    });
+
+
+      WidgetFridayElementsObj.btnFridayRegularClick();
+
+      cy.wait(2000);
+
+
+      WidgetFridayElementsObj.ticketDetailsOrderEditButtonClick().click();
+
+    cy.wait(2000);
+
+    WidgetFridayElementsObj.firstInputFilledTicketDetails()
+    .eq(2)
+    .invoke("val")
+    .then((text) => {
+      const telephoneNumberEditNew = text;
+
+      cy.wrap(telephoneNumberEditNew).should("eq",  globalTelephoneNumberEdit);
+      cy.log("Saved number in orders list:", telephoneNumberEditNew);
+
+    });
+
+
+
+  });
+
+
+  it("it should be sing out test", () => {
+
+
+
+    cy.visit(Cypress.env("developmentFriday").baseUrl + "/widget/4/1");
+
+    cy.wait(1000);
+
+    WidgetFridayElementsObj.fridayFirstHeaderActionClick().click();
+  
+    WidgetFridayElementsObj.beVisibleFridayElementList().should('be.visible');
+
+    WidgetFridayElementsObj.clickOnFridayMenuInList().eq(6).click();
+
+    cy.wait(1000);
+
+    WidgetFridayElementsObj.fridayFirstHeaderActionClick().click();
+
+    WidgetFridayElementsObj.clickOnFridayMenuInList().eq(6).click();
+
+    cy.get(".login-form-wrapper").should("be.visible");
+
+
+
   });
 
 
 
 
-  //   it("it should be Book a ticket test", () => {
-
-  //     cy.visit(
-  //       Cypress.env("developmentFriday").baseUrl + "/widget/4/1/286"
-  //     );
-  
-  //     cy.wait(1000);
-
-
-  //     WidgetFridayElementsObj.methodItemBookFriday().eq(1).click();
-
-  //   // WidgetElementsObj.basketActionButtonRegularClick().click();
-
-  //   // cy.wait(2000);
-
-  //   // cy.get(".thanks-page").should("be.visible");
-
-  //   // cy.get(".order-congratulation__order > span")
-  //   //   .eq(1)
-  //   //   .invoke("text")
-  //   //   .as("someText");
-
-  //   // cy.get("@someText").then((text) => {
-  //   //   const number = parseFloat(text.match(/\d+/)[0]);
-  //   //   globalNumber = number;
-  //   //   cy.log("Saved number:", globalNumber);
-  //   // });
-
-  //   // WidgetElementsObj.orderCongratulationBookingClick().click();
-
-  //   // cy.wait(2000);
-
-  //   // cy.get(".order-page").should("be.visible");
-  // });
-
-
-
-
-  // it("it should be Book a ticket test", () => {
-  //   cy.visit(
-  //     Cypress.env("development").baseUrl +
-  //       "/widget4site1/widget/event/286/checkout"
-  //   );
-
-
-
-  //   WidgetElementsObj.methodItemNameBookFind()
-  //     .contains("Book a ticket")
-  //     .click();
-
-  //   WidgetElementsObj.basketActionButtonRegularClick().click();
-
-  //   cy.wait(2000);
-
-  //   cy.get(".thanks-page").should("be.visible");
-
-  //   cy.get(".order-congratulation__order > span")
-  //     .eq(1)
-  //     .invoke("text")
-  //     .as("someText");
-
-  //   cy.get("@someText").then((text) => {
-  //     const number = parseFloat(text.match(/\d+/)[0]);
-  //     globalNumber = number;
-  //     cy.log("Saved number:", globalNumber);
-  //   });
-
-  //   WidgetElementsObj.orderCongratulationBookingClick().click();
-
-  //   cy.wait(2000);
-
-  //   cy.get(".order-page").should("be.visible");
-  // });
-
-
-  // it("it should be check promo code apply", () => {
-  //   // cy.visit(
-  //   //   Cypress.env("developmentFriday").baseUrl + "/widget/4/1/286"
-  //   // );
-  
-
-  //   cy.wait(1000);
-
-
-  //   WidgetFridayElementsObj.promoCodeFidayButtonClick()
-
-  //   WidgetFridayElementsObj.promoCodeDialogModalFriday().should("be.visible")
-
-  //   cy.wait(1000);
-  
-  //   WidgetFridayElementsObj.promoCodeInputFriday().type("procent2-test");
-  
-  //   cy.wait(1000);
-
-  //   WidgetFridayElementsObj.promoCodeFridayBtnClick()
-  
-  //   // WidgetElementsObj.promoCodeBlockBtnClick().click();
-
-  //   cy.wait(1000);
-  
-  //   WidgetFridayElementsObj.toastNificationFridaySuccess().should("be.visible")
-
-  
-  //   // cy.wait(1000);
-  
-  //   // cy.deleteMessageMail();
-  
-  // });
-
-
-  // it("it should be go to checkout page and check contact field input validation", () => {
-  //   // cy.visit(
-  //   //   Cypress.env("developmentFriday").baseUrl + "/widget/4/1/286"
-  //   // );
-
-
-
-  //   WidgetFridayElementsObj.firstInputFilledTypeTest().first().clear();
-
-  //   cy.wait(2000);
-    
-  //   WidgetFridayElementsObj.firstInputTypeTestNegative().first().type(randomFullName);
-
-    
-  //   WidgetFridayElementsObj.firstInputFilledTypeTest().eq(2).clear();
-
-  //   cy.wait(1000);
-
-
-     
-  //   WidgetFridayElementsObj.firstInputTypeTestNegative().eq(0).type(randomPhoneNumber)
-
-  //   cy.wait(1000);
-
-
-  //   WidgetFridayElementsObj.btnFridayRegularOrderClick();
-
-   
-  //   cy.wait(1000);
-
-  // //   cy.wait(1000);
-
-  // //   WidgetElementsObj.basketActionButtonClick().click();
-  // //   cy.wait(1000);
-
-  // //   WidgetElementsObj.checkoutOrderInfoClick()
-  // //     .eq(0)
-  // //     .find('[class="checkout-section__button"]')
-  // //     .click();
-
-  // //   WidgetElementsObj.userContactsFieldInputFind()
-  // //     .first()
-  // //     .clear()
-  // //     .type(randomFullName);
-
-  // //   WidgetElementsObj.contactFormCheckoutBtnClick().click();
-
-  // //   WidgetElementsObj.toastNificationSuccessFind()
-  // //     .should("be.visible")
-  // //     .and("contain", "Your contact info saved");
-  //  });
 
 
 

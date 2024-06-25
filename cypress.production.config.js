@@ -26,6 +26,9 @@ module.exports = defineConfig({
           prod: {
             baseUrl: "https://widget.mticket.com.ua"
           },
+           prodFriday: {
+            baseUrl: "https://sales.fridayticket.com"
+          },
   }
 
 });

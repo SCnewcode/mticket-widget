@@ -67,6 +67,14 @@ export class WidgetFridayElements {
 
         paymentSystemFind: ()  =>   cy.get('.payment-item'),
 
+        ticketDetailsFridayFieldInput: () => cy.get('.order-required-info').find('input[class="p-inputtext p-component"]'),
+
+        ticketDetailsFridayFilledInput: () => cy.get('.order-required-info').find('input[class="p-inputtext p-component p-filled"]'),
+
+        ticketDetailsFridayOrders: () => cy.get('.order-item-tickets__switcher').find('button[class="p-button p-component transparent-btn"]'),
+
+        ticketDetailsOrderEditButton: () => cy.get('.order-ticket-personal-info__actions').find('button[class="p-button p-component icon-transparent-btn btn-ticket-info-edit"]'),
+
         // contactPageSelector: () => cy.get(".contacts-page"),
 
         // contactPageSelector: () => cy.get(".contacts-page"),
@@ -76,6 +84,30 @@ export class WidgetFridayElements {
 
 
     }
+
+
+    ticketDetailsOrderEditButtonClick() {
+        return this.elements.ticketDetailsOrderEditButton()
+        
+     }
+
+    ticketDetailsFridayOrdersClick() {
+        return this.elements.ticketDetailsFridayOrders()
+        
+     }
+
+
+    firstInputTicketDetails() {
+        return this.elements.ticketDetailsFridayFieldInput()
+        
+     }
+ 
+     
+     firstInputFilledTicketDetails() {
+         return this.elements.ticketDetailsFridayFilledInput()
+
+      }
+  
 
 
 
