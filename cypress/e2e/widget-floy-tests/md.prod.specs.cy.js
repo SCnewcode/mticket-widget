@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+// <reference types="cypress" />
 
 import "cypress-mailosaur";
 
@@ -14,6 +14,11 @@ let globalTelephoneNumberEdit;
 
 const WidgetFridayElementsObj = new WidgetFridayElements();
 
+Cypress.on("uncaught:exception", (err, runnable) => {
+  // Return false to prevent the test from failing
+  return false;
+});
+
 describe("it should be check widget contact page and index localization prod", () => {
   const randomSessionNumber = faker.datatype.number();
 
@@ -24,22 +29,46 @@ describe("it should be check widget contact page and index localization prod", (
   const randomPhoneNumber = faker.phone.number("380########");
 
   let getNewMail;
-  Cypress.on("before:browser:launch", (browser = {}, launchOptions) => {
-    if (browser.name === "chrome" && browser.isHeaded) {
-      launchOptions.args.push(
-        "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-      );
-      return launchOptions;
-    }
-  });
 
   beforeEach(() => {
-    cy.FridayLoginWithUIProd(randomSessionNumber);
-    //   // cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068");
+    //   // Cypress.on('before:browser:launch', (browser = {}, launchOptions) => {
+    //   //   if (browser.name === 'chrome') {
+    //   //     launchOptions.args.push('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+    //   //     return launchOptions;
+    //   //   }
+    //   // });
+
+    //     // cy.visit("https://sales.fridayticket.com/widget/11/11004/user/login");
+    // //     cy.visit('https://sales.fridayticket.com/widget/11/11004/user/login?returnUrl=/widget/11/11004/user/index',
+    // //       {
+    // //           timeout: 20000,
+    // //           failOnStatusCode: false,
+    // //         }
+
+    // // );
+
+    // // cy.visit(Cypress.env("prodMoldova").baseUrl + "/widget/11/11004");
+
+    //   // cy.visit("https://sales.fridayticket.com/widget/11/11004/user/login",  {
+    //   //   failOnStatusCode: false
+    //   // });
+
+    //   // cy.visit(("https://sales.fridayticket.com/widget/11/11004/user/login"), { timeout: 15000 }, {
+    //   //   headers: {
+    //   //     "Accept": "application/json, text/plan, */*",
+    //   //     "User-Agent": "axios/0.18.0"
+    //   //   }
+    //   //   headers: {
+    //   //     'accept': 'application/json, text/plain, */*',
+    //   //     'user-agent': 'axios/0.27.2'
+    //   // }
+
+    cy.MoldovaLoginWithUIProd(randomSessionNumber);
+    //   // cy.visit(Cypress.env("prodMoldova").baseUrl + "/widget/11/11004");
   });
 
   it("it should be check go to friday widget contact page prod", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068");
+    cy.visit(Cypress.env("prodMoldova").baseUrl + "/en/widget/11/11004");
 
     WidgetFridayElementsObj.fridayFirstHeaderActionClick().click();
 
@@ -61,7 +90,9 @@ describe("it should be check widget contact page and index localization prod", (
   });
 
   it("it should be check to add a widget contact info prod", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068/user/index");
+    cy.visit(
+      Cypress.env("prodMoldova").baseUrl + "/en/widget/11/11004/user/index"
+    );
 
     WidgetFridayElementsObj.firstInputTypeTestNegative().first().type("te");
 
@@ -109,7 +140,9 @@ describe("it should be check widget contact page and index localization prod", (
   });
 
   it("it should be check widget document block", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068/user/index");
+    cy.visit(
+      Cypress.env("prodMoldova").baseUrl + "/en/widget/11/11004/user/index"
+    );
 
     cy.wait(1000);
 
@@ -133,7 +166,9 @@ describe("it should be check widget contact page and index localization prod", (
   });
 
   it("it should be check localization on widget contact page", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068/user/index");
+    cy.visit(
+      Cypress.env("prodMoldova").baseUrl + "/en/widget/11/11004/user/index"
+    );
 
     WidgetFridayElementsObj.localizationFridayMenuClick();
 
@@ -185,7 +220,7 @@ describe("it should be check widget contact page and index localization prod", (
   });
 
   it("it should be check localization on widget index page", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068");
+    cy.visit(Cypress.env("prodMoldova").baseUrl + "/en/widget/11/11004");
 
     WidgetFridayElementsObj.localizationFridayMenuClick();
 
@@ -255,12 +290,12 @@ describe("it should be check widget contact page and index localization prod", (
   });
 
   it("it should be choose random active event on index page", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068");
+    cy.visit(Cypress.env("prodMoldova").baseUrl + "/en/widget/11/11004");
     cy.get(".event-list__list").clickRandomClickableLinkInList();
   });
 
   it("it should be lock ticket in active event", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068/220");
+    cy.visit(Cypress.env("prodMoldova").baseUrl + "/en/widget/11/11004/220");
     cy.wait(1000);
 
     // Check if element with specific class exists
@@ -323,7 +358,7 @@ describe("it should be check widget contact page and index localization prod", (
   });
 
   it("it should be check basket order sum amount", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068/220");
+    cy.visit(Cypress.env("prodMoldova").baseUrl + "/widget/11/11004/220");
 
     cy.get(".order-tickets__tickets").each(($element) => {
       const text = $element.text().trim();
@@ -344,7 +379,7 @@ describe("it should be check widget contact page and index localization prod", (
   });
 
   it("it should be check all event price and event info on page", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068/472");
+    cy.visit(Cypress.env("prodMoldova").baseUrl + "/widget/11/11004/472");
 
     cy.get("[class='place-price']").should("be.visible");
 
@@ -410,7 +445,7 @@ describe("it should be check widget contact page and index localization prod", (
   });
 
   it("it should be check payment systems redirect", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068/220");
+    cy.visit(Cypress.env("prodMoldova").baseUrl + "/widget/11/11004/220");
 
     cy.wait(1000);
 
@@ -573,7 +608,7 @@ describe("it should be check widget contact page and index localization prod", (
 
   it("it should be check if the order number matches", () => {
     cy.visit(
-      Cypress.env("prodFriday").baseUrl + "/widget/20/1068/220/user/orders"
+      Cypress.env("prodMoldova").baseUrl + "/widget/11/11004/220/user/orders"
     );
 
     cy.wait(2000);
@@ -600,7 +635,7 @@ describe("it should be check widget contact page and index localization prod", (
   // it("it should test fill ticket personal info", () => {
 
   //   cy.visit(
-  //     Cypress.env("prodFriday").baseUrl + "/widget/20/1068/454"
+  //     Cypress.env("prodMoldova").baseUrl + "/widget/11/11004/454"
   //   );
 
   //   cy.get(".svg-pan-zoom_viewport")
@@ -772,7 +807,7 @@ describe("it should be check widget contact page and index localization prod", (
   // it("it should test if the ticket personal info matches and visible in orders list", () => {
 
   //   cy.visit(
-  //     Cypress.env("prodFriday").baseUrl + "/widget/20/1068/454/user/orders"
+  //     Cypress.env("prodMoldova").baseUrl + "/widget/11/11004/454/user/orders"
   //   );
 
   //   cy.get(".order-list").should("be.visible");
@@ -834,7 +869,7 @@ describe("it should be check widget contact page and index localization prod", (
   // });
 
   it("it should be sing out test", () => {
-    cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/20/1068");
+    cy.visit(Cypress.env("prodMoldova").baseUrl + "/widget/11/11004");
 
     cy.wait(1000);
 

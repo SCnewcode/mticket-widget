@@ -5,7 +5,10 @@
     "cypress-prod-test": "npx cypress run --spec cypress/e2e/widget-floy-tests/prod.widget.tests.cy.js --config-file cypress.production.config.js --env environment=prod",
     "cypress-dev-open": "cypress open --config-file cypress.test.config.js",
     "cypress-prod-open": "cypress open --config-file cypress.production.config.js",
-    "cypress-dev-friday-open": "cypress open --config-file cypress.test.config.js"
+    "cypress-dev-friday-open": "cypress open --config-file cypress.test.config.js",
+    "cypress-prod-friday-open": "cypress open --config-file cypress.production.config.js",
+    "cypress-friday-prod-test": "npx cypress run --spec cypress/e2e/widget-floy-tests/friday.prod.specs.cy.js --config-file cypress.production.config.js --env environment=prodFriday",
+    "cypress-prod-md-open": "cypress open --config-file cypress.production.config.js"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
