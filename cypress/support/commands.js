@@ -126,6 +126,96 @@ Cypress.Commands.add("loginWithUITest", (username, otp) => {
   });
 });
 
+
+
+let mticketMailBoxFormat;
+let mticketMailServiceToken;
+let mticketMailBoxId;
+// let otp;
+
+Cypress.Commands.add("MticketLoginWithUITest", (user) => {
+  const apiEndpoint = "https://www.developermail.com/api/v1/mailbox";
+
+  // Function to create mailbox and get mailbox details
+  const createMailbox = () => {
+    const mailboxName = `testmailbox_${Date.now()}`;
+    const requestBody = { name: mailboxName };
+
+    return cy
+      .request({
+        method: "PUT",
+        url: apiEndpoint,
+        body: requestBody,
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        expect(response.status).to.eq(200);
+        mticketMailBoxId = response.body.result.name;
+        mticketMailBoxFormat = `${mticketMailBoxId}@developermail.com`;
+        mticketMailServiceToken = response.body.result.token;
+
+        cy.log(mticketMailBoxId);
+
+        // cy.visit(Cypress.env("prodFriday").baseUrl + "/widget/4/1/user/login");
+
+        cy.visit("https://showcasem.test.mticket.com.ua/widget4site1/user/index");
+
+
+
+        cy.get('[inputmode="email"]').type(mticketMailBoxFormat); //test
+        cy.get("[class='p-checkbox p-component base-checkbox']").click();
+        cy.get("[class='btn btn-regular']").click();
+        cy.wait(2000);
+
+        // cy.get('[inputmode="email"]').type(mticketMailBoxFormat);
+        // cy.get(".login-form-agreement-block")
+        //   .eq(2)
+        //   .find('[class="checkbox-field"]')
+        //   .click();
+        // // cy.get("[class='p-checkbox p-component base-checkbox']")find( ).click();
+        // cy.get("[class='p-button p-component regular-btn btn-submit']").click();
+
+        // cy.wrap({ mailBoxFormat }).as('userData');
+      });
+  };
+
+  // Function to complete the login process
+  const completeLogin = () => {
+    // cy.visit("https://widget.mticket.com.ua/en/widget97site77/user/login");
+    // cy.get('[inputmode="email"]').type(mailBoxFormat);
+    // cy.get("[class='p-checkbox p-component base-checkbox']").click();
+    // cy.get("[class='btn btn-regular']").click();
+    cy.wait(2000)
+    cy.get('[inputmode="numeric"]').type("111");
+    cy.get(".login-form__actions > button").click();
+    cy.wait(2000)
+    // cy.get(".cc-btn.cc-btn-accept.cc-btn-accept-all").click();
+    // cy.wait(1000);
+    // cy.get('[inputmode="numeric"]').type("111");
+    // cy.wait(1000);
+    // cy.get("[class='p-button p-component regular-btn btn-submit']").click();
+    // cy.wait(2000);
+  };
+
+  cy.session(
+    [user],
+    () => {
+      createMailbox().then(() => {
+        completeLogin();
+
+        // cy.wrap( {mailBoxFormat, otp} ).as('userDataNew');
+      });
+    },
+    {
+      cacheAcrossSpecs: true, // Enable session caching across different spec files
+    }
+  );
+});
+
+
+
+
+
 let mailBoxFormat;
 let mailServiceToken;
 let mailBoxId;

@@ -2,6 +2,7 @@
   "scripts": {
     "Cypress_Test": "cypress run",
     "cypress-test": "npx cypress run --spec cypress/e2e/widget-floy-tests/test.widget.cy.js --config-file cypress.test.config.js --env environment=development",
+    "cypress-test-friday": "npx cypress run --spec cypress/e2e/widget-floy-tests/friday.specs.cy.js --config-file cypress.test.config.js --env environment=developmentFriday",
     "cypress-prod-test": "npx cypress run --spec cypress/e2e/widget-floy-tests/prod.widget.tests.cy.js --config-file cypress.production.config.js --env environment=prod",
     "cypress-dev-open": "cypress open --config-file cypress.test.config.js",
     "cypress-prod-open": "cypress open --config-file cypress.production.config.js",

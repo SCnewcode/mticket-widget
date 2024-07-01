@@ -15,8 +15,10 @@ describe("Your Test Suite Description", () => {
 
   const randomMail = faker.internet.email();
 
+  const mticketRandomSessionNumber = faker.datatype.number();
+
   beforeEach(() => {
-    cy.loginWithUITest(randomMail, "111");
+    cy.MticketLoginWithUITest(mticketRandomSessionNumber);
     cy.visit(Cypress.env("development").baseUrl + "/widget4site1/widget/index");
     // cy.visit('widget4site1/widget/index')
   });
@@ -163,7 +165,7 @@ describe("Your Test Suite Description", () => {
 
   it("it should be lock ticket in active event", () => {
     cy.visit(
-      Cypress.env("development").baseUrl + "/widget4site1/widget/event/286"
+      Cypress.env("development").baseUrl + "/widget4site1/widget/event/472"
     );
     cy.wait(1000);
 
@@ -230,7 +232,7 @@ describe("Your Test Suite Description", () => {
 
   it("it should be check basket order sum amount", () => {
     cy.visit(
-      Cypress.env("development").baseUrl + "/widget4site1/widget/event/286"
+      Cypress.env("development").baseUrl + "/widget4site1/widget/event/472"
     );
     WidgetElementsObj.cookieConsentClick();
 
@@ -254,7 +256,7 @@ describe("Your Test Suite Description", () => {
 
   it("it should be check all event price and event info on page", () => {
     cy.visit(
-      Cypress.env("development").baseUrl + "/widget4site1/widget/event/286"
+      Cypress.env("development").baseUrl + "/widget4site1/widget/event/472"
     );
     WidgetElementsObj.cookieConsentClick();
 
@@ -272,7 +274,7 @@ describe("Your Test Suite Description", () => {
 
   it("it should be go to checkout page and check contact field input validation", () => {
     cy.visit(
-      Cypress.env("development").baseUrl + "/widget4site1/widget/event/286"
+      Cypress.env("development").baseUrl + "/widget4site1/widget/event/472"
     );
     WidgetElementsObj.cookieConsentClick();
     cy.wait(1000);
@@ -300,7 +302,7 @@ describe("Your Test Suite Description", () => {
   it("it should be check promo code apply", () => {
     cy.visit(
       Cypress.env("development").baseUrl +
-        "/widget4site1/widget/event/286/checkout"
+        "/widget4site1/widget/event/472/checkout"
     );
     WidgetElementsObj.cookieConsentClick();
     cy.wait(1000);
@@ -321,7 +323,7 @@ describe("Your Test Suite Description", () => {
   it("it should be Book a ticket test", () => {
     cy.visit(
       Cypress.env("development").baseUrl +
-        "/widget4site1/widget/event/286/checkout"
+        "/widget4site1/widget/event/472/checkout"
     );
     WidgetElementsObj.cookieConsentClick();
     cy.wait(1000);
@@ -396,7 +398,7 @@ describe("Your Test Suite Description", () => {
 
   it("it should be check payment systems redirect", () => {
     cy.visit(
-      Cypress.env("development").baseUrl + "/widget4site1/widget/event/286"
+      Cypress.env("development").baseUrl + "/widget4site1/widget/event/472"
     );
     cy.wait(1000);
 
@@ -488,7 +490,7 @@ describe("Your Test Suite Description", () => {
 
     cy.visit(
       Cypress.env("development").baseUrl +
-        "/widget4site1/widget/event/286/checkout"
+        "/widget4site1/widget/event/472/checkout"
     );
 
     cy.wait(3000);
@@ -508,7 +510,7 @@ describe("Your Test Suite Description", () => {
 
     cy.visit(
       Cypress.env("development").baseUrl +
-        "/widget4site1/widget/event/286/checkout"
+        "/widget4site1/widget/event/472/checkout"
     );
 
     cy.wait(3000);
@@ -528,7 +530,7 @@ describe("Your Test Suite Description", () => {
 
     cy.visit(
       Cypress.env("development").baseUrl +
-        "/widget4site1/widget/event/286/checkout"
+        "/widget4site1/widget/event/472/checkout"
     );
 
     cy.wait(3000);
